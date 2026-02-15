@@ -394,3 +394,87 @@ body {
     .banner-main { height: 300px; }
     .banner-side { flex-direction: row; }
 }
+
+/* ======================================================= */
+/* ส่วนที่เพิ่มใหม่: สำหรับกล่องบริการ (Craft Your Comfort)     */
+/* ======================================================= */
+
+/* ปรับปรุงกล่อง item-1 ให้รองรับเนื้อหาเยอะๆ */
+.service-box {
+    background: linear-gradient(135deg, #8D6E63, #6D4C41); /* ไล่สีน้ำตาลให้มีมิติ */
+    padding: 20px 25px !important; /* จัดระยะขอบใหม่ */
+    display: block !important; /* ยกเลิก flex เดิมเพื่อให้จัด Layout เอง */
+    color: white;
+}
+
+.service-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #FFF;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.service-content .sub-head {
+    font-size: 0.9rem;
+    color: #EFEFEF;
+    margin-bottom: 15px;
+    font-weight: 300;
+}
+
+/* รายการจุดเด่น (List) */
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.feature-list li {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.feature-list li i {
+    color: #FFD54F; /* ไอคอนสีเหลืองทอง */
+    width: 20px;
+    text-align: center;
+}
+
+/* เส้นคั่น */
+.divider {
+    height: 1px;
+    background-color: rgba(255,255,255,0.3);
+    margin: 10px 0;
+}
+
+/* ส่วนรีโนเวท */
+.renovate-section {
+    background-color: rgba(0,0,0,0.15); /* พื้นหลังจางๆ ให้เด่นขึ้น */
+    padding: 10px;
+    border-radius: 6px;
+    border-left: 3px solid #FFD54F; /* ขีดสีทองด้านหน้า */
+}
+
+.renovate-section h4 {
+    font-size: 1rem;
+    margin-bottom: 2px;
+    color: #FFF;
+}
+
+.renovate-section p {
+    font-size: 0.8rem;
+    color: #DDD;
+    margin: 0;
+}
+
+/* ปรับตำแหน่งไอคอนพื้นหลังใหม่ ไม่ให้บังตัวหนังสือ */
+.service-box .icon-bg {
+    font-size: 8rem;
+    right: -20px;
+    bottom: -30px;
+    opacity: 0.1;
+    transform: rotate(-15deg);
+}
