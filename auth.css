@@ -18,7 +18,7 @@ body {
 .auth-container {
     background: white;
     width: 100%;
-    max-width: 450px; /* ขยายความกว้างนิดหน่อย */
+    max-width: 450px;
     padding: 40px;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
@@ -26,7 +26,7 @@ body {
 }
 
 /* --- Header --- */
-.auth-header { margin-bottom: 25px; }
+.auth-header { margin-bottom: 30px; }
 .auth-header h2 { 
     color: #212121; 
     font-size: 1.8rem; 
@@ -39,43 +39,6 @@ body {
 }
 .auth-header h2 i { color: #D4A373; }
 .auth-header p { color: #888; font-size: 0.95rem; margin-top: 5px; }
-
-/* --- Google Button --- */
-.btn-google {
-    width: 100%;
-    padding: 12px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-    color: #555;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    transition: 0.3s;
-    margin-bottom: 20px;
-    font-weight: 500;
-}
-.btn-google:hover { background-color: #f9f9f9; border-color: #ccc; }
-
-/* --- Divider (เส้นคั่น) --- */
-.divider {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #999;
-    font-size: 0.85rem;
-    margin: 20px 0;
-}
-.divider::before, .divider::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px solid #eee;
-}
-.divider::before { margin-right: 10px; }
-.divider::after { margin-left: 10px; }
 
 /* --- Tabs (เลือกประเภทการสมัคร) --- */
 .auth-tabs {
@@ -125,7 +88,7 @@ body {
 .btn-request-otp {
     position: absolute;
     right: 8px;
-    top: 38px; /* ปรับตำแหน่งให้ตรงกับช่อง input */
+    top: 38px;
     background-color: #333;
     color: white;
     border: none;
@@ -138,7 +101,7 @@ body {
 .btn-request-otp:hover { background-color: #555; }
 
 .otp-box {
-    display: none; /* ซ่อนไว้ก่อน */
+    display: none;
     background-color: #FFF8F0;
     border: 1px dashed #D4A373;
     padding: 15px;
