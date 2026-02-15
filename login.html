@@ -16,8 +16,8 @@
         </div>
 
         <div class="auth-tabs">
-            <button class="tab-btn active" onclick="switchTab('email')">อีเมล / รหัสผ่าน</button>
-            <button class="tab-btn" onclick="switchTab('phone')">เบอร์โทร (OTP)</button>
+            <button class="tab-btn active" onclick="switchTab('email')">อีเมล</button>
+            <button class="tab-btn" onclick="switchTab('phone')">เบอร์โทรศัพท์</button>
         </div>
 
         <form id="form-email" action="#" method="POST">
@@ -36,21 +36,21 @@
         </form>
 
         <form id="form-phone" style="display: none;" action="#" method="POST">
-            <div class="form-group input-wrapper">
-                <label>เบอร์โทรศัพท์ที่ลงทะเบียนไว้</label>
-                <input type="tel" id="login-phone" placeholder="08x-xxx-xxxx">
-                <button type="button" class="btn-request-otp" onclick="requestOTP('login')">ขอ OTP</button>
+            <div class="form-group">
+                <label>เบอร์โทรศัพท์</label>
+                <input type="tel" placeholder="08x-xxx-xxxx">
             </div>
 
-            <div id="otp-box-login" class="otp-box">
-                <div class="form-group" style="margin-bottom: 5px;">
-                    <label>รหัส OTP</label>
-                    <input type="text" placeholder="_ _ _ _" maxlength="4" style="text-align: center; letter-spacing: 5px; font-weight: bold;">
-                </div>
-                <small style="color: #666;">รหัสจะหมดอายุใน: <span id="timer-login" style="color: #D32F2F; font-weight: bold;">01:00</span></small>
+            <div class="form-group">
+                <label>รหัสผ่าน</label>
+                <input type="password" placeholder="กรอกรหัสผ่าน">
             </div>
 
-            <button type="button" id="btn-submit-login" class="btn-auth" disabled onclick="window.location.href='index.html'">เข้าสู่ระบบ</button>
+            <div style="text-align: right; margin-bottom: 20px;">
+                <a href="#" style="font-size: 0.85rem; color: #888; text-decoration: none;">ลืมรหัสผ่าน?</a>
+            </div>
+
+            <button type="button" class="btn-auth" onclick="window.location.href='index.html'">เข้าสู่ระบบ</button>
         </form>
 
         <div class="auth-footer">
@@ -71,38 +71,6 @@
                 document.getElementById('form-email').style.display = 'none';
                 document.getElementById('form-phone').style.display = 'block';
             }
-        }
-
-        function requestOTP(pageType) {
-            const phoneInput = document.getElementById(pageType === 'reg' ? 'reg-phone' : 'login-phone');
-            if(phoneInput.value.length < 9) {
-                alert('กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง');
-                return;
-            }
-
-            alert('ระบบส่ง OTP ไปที่เบอร์ ' + phoneInput.value + ' (OTP คือ 1234)');
-            
-            document.getElementById('otp-box-' + pageType).style.display = 'block';
-            const submitBtn = document.getElementById(pageType === 'reg' ? 'btn-submit-reg' : 'btn-submit-login');
-            submitBtn.disabled = false;
-            
-            startTimer(pageType);
-        }
-
-        function startTimer(pageType) {
-            let time = 60;
-            const timerElement = document.getElementById('timer-' + pageType);
-            const interval = setInterval(() => {
-                let minutes = Math.floor(time / 60);
-                let seconds = time % 60;
-                seconds = seconds < 10 ? '0' + seconds : seconds;
-                timerElement.textContent = `0${minutes}:${seconds}`;
-                if (time <= 0) {
-                    clearInterval(interval);
-                    timerElement.textContent = "หมดเวลา";
-                }
-                time--;
-            }, 1000);
         }
     </script>
 </body>
