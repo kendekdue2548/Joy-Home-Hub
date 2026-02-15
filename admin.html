@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบหลังบ้าน - Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Kanit', sans-serif; background-color: #f4f6f9; padding: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        h1 { color: #333; margin-bottom: 20px; border-bottom: 2px solid #D4A373; padding-bottom: 10px; display: flex; justify-content: space-between; align-items: center;}
+        .btn-back { background: #333; color: white; text-decoration: none; font-size: 1rem; padding: 8px 15px; border-radius: 5px; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #f8f9fa; color: #555; font-weight: 600; }
+        tr:hover { background-color: #f1f1f1; }
+        
+        .empty-state { text-align: center; padding: 50px; color: #999; }
+        .badge { padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; }
+        .badge-admin { background: #333; color: white; }
+        .badge-user { background: #e0e0e0; color: #333; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>
+            <span><i class="fas fa-users-cog"></i> รายชื่อสมาชิกทั้งหมด</span>
+            <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> กลับหน้าเว็บ</a>
+        </h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ลำดับ</th>
+                    <th>ชื่อ - นามสกุล</th>
+                    <th>อีเมล / เบอร์โทร (Username)</th>
+                    <th>รหัสผ่าน (Password)</th>
+                    <th>สถานะ</th>
+                </tr>
+            </thead>
+            <tbody id="user-table-body">
+                </tbody>
+        </table>
+        
+        <div id="empty-msg" class="empty-state" style="display: none;">ยังไม่มีสมาชิกสมัครเข้ามา</div>
+    </div>
+
+    <script>
+        // ตรวจสอบสิทธิ์ก่อนเข้าหน้านี้
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (!currentUser || currentUser.username !== 'ken') {
+            alert('คุณไม่มีสิทธิ์เข้าถึงหน้านี้!');
+            window.location.href = 'index.html';
+        }
+
+        // ดึงข้อมูลสมาชิกทั้งหมด
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const tableBody = document.getElementById('user-table-body');
+
+        // เพิ่ม Admin (ken) เข้าไปแสดงด้วย (ถ้ายังไม่มีใน list)
+        // หมายเหตุ: ปกติ Admin จะไม่รวมกับ User ทั่วไป แต่เพื่อความง่ายในการดู
+        
+        if (users.length === 0) {
+            document.getElementById('empty-msg').style.display = 'block';
+        } else {
+            users.forEach((user, index) => {
+                const row = document.createElement('tr');
+                const roleBadge = user.username === 'ken' ? '<span class="badge badge-admin">Admin</span>' : '<span class="badge badge-user">Member</span>';
+                
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${user.name}</td>
+                    <td>${user.username}</td>
+                    <td style="font-family: monospace; color: #D32F2F;">${user.password}</td>
+                    <td>${roleBadge}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+    </script>
+</body>
+</html>
