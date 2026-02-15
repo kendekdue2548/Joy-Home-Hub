@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>สมัครสมาชิก - Me Sofa Design</title>
+    <title>เข้าสู่ระบบ - Me Sofa Design</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="auth.css">
 </head>
@@ -12,60 +12,49 @@
     <div class="auth-container">
         <div class="auth-header">
             <h2><i class="fas fa-couch"></i> ME SOFA</h2>
-            <p>สร้างบัญชีใหม่เพื่อรับสิทธิพิเศษและส่วนลด</p>
+            <p>ยินดีต้อนรับกลับเข้าสู่ระบบ</p>
         </div>
 
         <div class="auth-tabs">
-            <button class="tab-btn active" id="btn-email" onclick="switchTab('email')">อีเมล</button>
-            <button class="tab-btn" id="btn-phone" onclick="switchTab('phone')">เบอร์โทรศัพท์</button>
+            <button class="tab-btn active" id="btn-login-email" onclick="switchTab('email')">อีเมล</button>
+            <button class="tab-btn" id="btn-login-phone" onclick="switchTab('phone')">เบอร์โทรศัพท์</button>
         </div>
 
         <form id="form-email">
             <div class="form-group">
-                <label>ชื่อ - นามสกุล</label>
-                <input type="text" id="reg-email-name" placeholder="เช่น สมชาย ใจดี">
-            </div>
-            <div class="form-group">
-                <label>อีเมล</label>
-                <input type="email" id="reg-email-user" placeholder="example@email.com">
+                <label>อีเมล หรือ ชื่อผู้ใช้</label>
+                <input type="text" id="login-email-user" placeholder="กรอกอีเมลของคุณ">
             </div>
             <div class="form-group">
                 <label>รหัสผ่าน</label>
-                <input type="password" id="reg-email-pass" placeholder="อย่างน้อย 8 ตัวอักษร">
+                <input type="password" id="login-email-pass" placeholder="กรอกรหัสผ่าน">
             </div>
-            <div class="form-group">
-                <label>ยืนยันรหัสผ่าน</label>
-                <input type="password" id="reg-email-confirm" placeholder="กรอกรหัสผ่านอีกครั้ง">
+            <div style="text-align: right; margin-bottom: 20px;">
+                <a href="#" style="font-size: 0.85rem; color: #888; text-decoration: none;">ลืมรหัสผ่าน?</a>
             </div>
-            <button type="button" class="btn-auth" onclick="registerUser('email')">สมัครสมาชิก</button>
+            <button type="button" class="btn-auth" onclick="loginUser('email')">เข้าสู่ระบบ</button>
         </form>
 
         <form id="form-phone" style="display: none;">
             <div class="form-group">
-                <label>ชื่อ - นามสกุล</label>
-                <input type="text" id="reg-phone-name" placeholder="เช่น สมชาย ใจดี">
-            </div>
-            
-            <div class="form-group">
                 <label>เบอร์โทรศัพท์</label>
-                <input type="tel" id="reg-phone-user" placeholder="08x-xxx-xxxx">
+                <input type="tel" id="login-phone-user" placeholder="08x-xxx-xxxx">
             </div>
 
             <div class="form-group">
-                <label>กำหนดรหัสผ่าน</label>
-                <input type="password" id="reg-phone-pass" placeholder="อย่างน้อย 8 ตัวอักษร">
+                <label>รหัสผ่าน</label>
+                <input type="password" id="login-phone-pass" placeholder="กรอกรหัสผ่าน">
             </div>
 
-            <div class="form-group">
-                <label>ยืนยันรหัสผ่าน</label>
-                <input type="password" id="reg-phone-confirm" placeholder="กรอกรหัสผ่านอีกครั้ง">
+            <div style="text-align: right; margin-bottom: 20px;">
+                <a href="#" style="font-size: 0.85rem; color: #888; text-decoration: none;">ลืมรหัสผ่าน?</a>
             </div>
 
-            <button type="button" class="btn-auth" onclick="registerUser('phone')">สมัครสมาชิก</button>
+            <button type="button" class="btn-auth" onclick="loginUser('phone')">เข้าสู่ระบบ</button>
         </form>
 
         <div class="auth-footer">
-            มีบัญชีอยู่แล้ว? <a href="login.html">เข้าสู่ระบบ</a>
+            ยังไม่มีบัญชีใช่ไหม? <a href="register.html">สมัครสมาชิกที่นี่</a>
         </div>
         <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> กลับไปหน้าหลัก</a>
     </div>
@@ -75,64 +64,52 @@
         function switchTab(type) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             if (type === 'email') {
-                document.getElementById('btn-email').classList.add('active');
+                document.getElementById('btn-login-email').classList.add('active');
                 document.getElementById('form-email').style.display = 'block';
                 document.getElementById('form-phone').style.display = 'none';
             } else {
-                document.getElementById('btn-phone').classList.add('active');
+                document.getElementById('btn-login-phone').classList.add('active');
                 document.getElementById('form-email').style.display = 'none';
                 document.getElementById('form-phone').style.display = 'block';
             }
         }
 
-        // --- ระบบบันทึกข้อมูลสมาชิก (Database จำลองโดยใช้ LocalStorage) ---
-        function registerUser(type) {
-            const name = document.getElementById(`reg-${type}-name`).value.trim();
-            const username = document.getElementById(`reg-${type}-user`).value.trim();
-            const pass = document.getElementById(`reg-${type}-pass`).value;
-            const confirm = document.getElementById(`reg-${type}-confirm`).value;
+        // ฟังก์ชันเข้าสู่ระบบ (ใช้งานได้จริง)
+        function loginUser(type) {
+            const username = document.getElementById(`login-${type}-user`).value.trim();
+            const pass = document.getElementById(`login-${type}-pass`).value;
 
-            // 1. ตรวจสอบความว่างเปล่า
-            if(!name || !username || !pass || !confirm) {
-                alert("กรุณากรอกข้อมูลให้ครบถ้วนทุกช่อง");
+            if(username === "" || pass === "") {
+                alert("กรุณากรอกข้อมูลให้ครบถ้วน");
                 return;
             }
 
-            // 2. ตรวจสอบความยาวรหัสผ่าน
-            if(pass.length < 8) {
-                alert("รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัวอักษร");
+            // --- ตรวจสอบสิทธิ์ Admin (ken / ken) ---
+            if (username === 'ken' && pass === 'ken') {
+                const adminUser = { 
+                    name: 'Super Admin', 
+                    username: 'ken', 
+                    role: 'admin' 
+                };
+                localStorage.setItem('currentUser', JSON.stringify(adminUser));
+                alert("เข้าสู่ระบบในฐานะ Admin สำเร็จ!");
+                window.location.href = 'index.html';
                 return;
             }
 
-            // 3. ตรวจสอบรหัสผ่านตรงกัน
-            if(pass !== confirm) {
-                alert("ยืนยันรหัสผ่านไม่ตรงกัน กรุณาตรวจสอบอีกครั้ง");
-                return;
+            // --- ตรวจสอบผู้ใช้ทั่วไปในระบบ (LocalStorage) ---
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            // ค้นหาผู้ใช้ที่ username และ password ตรงกัน
+            const validUser = users.find(u => u.username === username && u.password === pass);
+
+            if (validUser) {
+                // บันทึกสถานะผู้ใช้ที่กำลังล็อกอินปัจจุบัน
+                localStorage.setItem('currentUser', JSON.stringify(validUser));
+                alert("เข้าสู่ระบบสำเร็จ! ยินดีต้อนรับคุณ " + validUser.name);
+                window.location.href = 'index.html';
+            } else {
+                alert("ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง");
             }
-
-            // 4. ดึงข้อมูลสมาชิกที่มีอยู่แล้วจาก LocalStorage
-            let users = JSON.parse(localStorage.getItem('users')) || [];
-
-            // 5. ตรวจสอบว่าชื่อผู้ใช้งาน (อีเมล/เบอร์โทร) นี้ถูกใช้ไปหรือยัง
-            const userExists = users.some(u => u.username === username);
-            if(userExists) {
-                alert("อีเมลหรือเบอร์โทรศัพท์นี้ถูกนำไปใช้สมัครสมาชิกแล้ว");
-                return;
-            }
-
-            // 6. บันทึกข้อมูลสมาชิกใหม่ลงในอาร์เรย์
-            users.push({ 
-                name: name, 
-                username: username, 
-                password: pass 
-            });
-
-            // 7. เซฟข้อมูลกลับลงไปใน LocalStorage
-            localStorage.setItem('users', JSON.stringify(users));
-
-            // 8. แจ้งเตือนและส่งไปยังหน้าเข้าสู่ระบบ
-            alert("ยินดีด้วย! คุณสมัครสมาชิกสำเร็จแล้ว");
-            window.location.href = 'login.html';
         }
     </script>
 </body>
