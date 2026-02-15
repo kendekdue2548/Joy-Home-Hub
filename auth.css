@@ -8,7 +8,7 @@
 }
 
 body {
-    background-color: #F5F5F5; /* สีพื้นหลังเทาอ่อน */
+    background-color: #F5F5F5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,7 +40,7 @@ body {
 .auth-header h2 i { color: #D4A373; }
 .auth-header p { color: #888; font-size: 0.95rem; margin-top: 5px; }
 
-/* --- Tabs (เลือกประเภทการสมัคร) --- */
+/* --- Tabs --- */
 .auth-tabs {
     display: flex;
     border-bottom: 1px solid #eee;
@@ -59,7 +59,7 @@ body {
     font-weight: 500;
 }
 .tab-btn.active {
-    color: #D4A373; /* สีทอง */
+    color: #D4A373;
     border-bottom: 2px solid #D4A373;
     font-weight: 600;
 }
@@ -83,35 +83,7 @@ body {
     box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.15); 
 }
 
-/* --- OTP Section --- */
-.input-wrapper { position: relative; }
-.btn-request-otp {
-    position: absolute;
-    right: 8px;
-    top: 38px;
-    background-color: #333;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: 0.3s;
-}
-.btn-request-otp:hover { background-color: #555; }
-
-.otp-box {
-    display: none;
-    background-color: #FFF8F0;
-    border: 1px dashed #D4A373;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    animation: fadeIn 0.5s;
-}
-@keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-
-/* --- Submit Button --- */
+/* --- Button --- */
 .btn-auth {
     width: 100%;
     padding: 14px;
@@ -127,9 +99,8 @@ body {
     box-shadow: 0 4px 15px rgba(212, 163, 115, 0.3);
 }
 .btn-auth:hover { background-color: #C38D5E; transform: translateY(-2px); }
-.btn-auth:disabled { background-color: #ccc; cursor: not-allowed; box-shadow: none; transform: none; }
 
-/* --- Footer Link --- */
+/* --- Footer --- */
 .auth-footer { margin-top: 25px; font-size: 0.9rem; color: #666; }
 .auth-footer a { color: #D4A373; text-decoration: none; font-weight: 600; }
 .auth-footer a:hover { text-decoration: underline; }
