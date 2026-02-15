@@ -1,1 +1,47 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เข้าสู่ระบบ - Me Sofa Design</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
 
+    <div class="auth-container">
+        <div class="auth-header">
+            <h2><i class="fas fa-couch"></i> ME SOFA</h2>
+            <p>ยินดีต้อนรับกลับเข้าสู่ระบบ</p>
+        </div>
+
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="email">อีเมล หรือ เบอร์โทรศัพท์</label>
+                <input type="text" id="email" placeholder="กรอกอีเมลของคุณ">
+            </div>
+
+            <div class="form-group">
+                <label for="password">รหัสผ่าน</label>
+                <input type="password" id="password" placeholder="กรอกรหัสผ่าน">
+            </div>
+            
+            <div style="text-align: right; margin-bottom: 20px;">
+                <a href="#" style="font-size: 0.85rem; color: #888; text-decoration: none;">ลืมรหัสผ่าน?</a>
+            </div>
+
+            <button type="submit" class="btn-auth">เข้าสู่ระบบ</button>
+        </form>
+
+        <div class="divider"></div>
+
+        <div class="auth-footer">
+            ยังไม่มีบัญชีใช่ไหม? <a href="register.html">สมัครสมาชิกที่นี่</a>
+        </div>
+        <div class="auth-footer" style="margin-top: 10px;">
+            <a href="index.html" style="color: #888;"><i class="fas fa-arrow-left"></i> กลับไปหน้าแรก</a>
+        </div>
+    </div>
+
+</body>
+</html>
