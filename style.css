@@ -478,3 +478,45 @@ body {
     opacity: 0.1;
     transform: rotate(-15deg);
 }
+
+/* ======================================================= */
+/* ส่วนที่เพิ่มใหม่: ระบบจัดการสถานะล็อกอิน และปุ่มหลังบ้าน */
+/* ======================================================= */
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ปรับแต่งปุ่มระบบหลังบ้านที่เพิ่มด้วย JS */
+.auth-buttons a[href="admin.html"] {
+    background: #333 !important;
+    color: white !important;
+    padding: 5px 12px !important;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.85rem !important;
+    transition: 0.3s;
+    border: 1px solid #444;
+}
+
+.auth-buttons a[href="admin.html"]:hover {
+    background: #D4A373 !important;
+    border-color: #D4A373;
+}
+
+.auth-buttons span {
+    color: white;
+    font-size: 0.9rem;
+}
+
+.auth-buttons a[onclick="logout()"] {
+    color: #888 !important;
+    font-size: 0.8rem !important;
+    text-decoration: underline !important;
+}
+
+.auth-buttons a[onclick="logout()"]:hover {
+    color: #D32F2F !important;
+}
