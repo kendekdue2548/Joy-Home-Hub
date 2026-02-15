@@ -25,7 +25,7 @@
                 <a href="#" class="icon-link"><i class="fas fa-shopping-cart"></i></a>
                 <a href="#" class="icon-link"><i class="fas fa-heart"></i></a>
                 
-                <div class="auth-buttons">
+                <div class="auth-buttons" id="auth-section">
                     <a href="register.html" class="btn-register">สมัครสมาชิก</a>
                     <a href="login.html" class="btn-login">เข้าสู่ระบบ</a>
                 </div>
@@ -161,6 +161,38 @@
         
         <div style="height: 50px;"></div>
     </div>
+
+    <script>
+        window.onload = function() {
+            // ดึงข้อมูลผู้ใช้ที่ล็อกอินอยู่จาก LocalStorage
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const authSection = document.getElementById('auth-section');
+
+            if (currentUser) {
+                let adminBtn = '';
+                // ถ้าเป็น Admin (ken) ให้โชว์ปุ่มระบบหลังบ้าน
+                if (currentUser.username === 'ken') {
+                    adminBtn = `<a href="admin.html" style="background: #333; color: white; padding: 5px 10px; border-radius: 4px; text-decoration: none; font-size: 0.9rem; margin-right: 10px; display: inline-flex; align-items: center; gap: 5px;"><i class="fas fa-cogs"></i> ระบบหลังบ้าน</a>`;
+                }
+
+                // เปลี่ยนปุ่ม สมัคร/เข้าสู่ระบบ เป็น ชื่อผู้ใช้ และปุ่มออกจากระบบ
+                authSection.innerHTML = `
+                    ${adminBtn}
+                    <span style="color: white; font-weight: bold; margin-right: 10px;">
+                        <i class="fas fa-user-circle"></i> คุณ ${currentUser.name}
+                    </span>
+                    <a href="#" onclick="logout()" style="color: #ccc; text-decoration: none; font-size: 0.9rem;">ออกจากระบบ</a>
+                `;
+            }
+        }
+
+        function logout() {
+            if(confirm("ต้องการออกจากระบบใช่หรือไม่?")) {
+                localStorage.removeItem('currentUser'); // ลบสถานะล็อกอิน
+                window.location.reload(); // รีเฟรชหน้าจอ
+            }
+        }
+    </script>
 
 </body>
 </html>
