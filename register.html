@@ -15,13 +15,6 @@
             <p>สร้างบัญชีใหม่เพื่อรับสิทธิพิเศษและส่วนลด</p>
         </div>
 
-        <button class="btn-google" onclick="alert('กำลังเชื่อมต่อ Google...')">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" width="20">
-            สมัครด้วยบัญชี Google
-        </button>
-
-        <div class="divider">หรือสมัครด้วย</div>
-
         <div class="auth-tabs">
             <button class="tab-btn active" onclick="switchTab('email')">อีเมล</button>
             <button class="tab-btn" onclick="switchTab('phone')">เบอร์โทรศัพท์</button>
@@ -82,7 +75,6 @@
     </div>
 
     <script>
-        // ฟังก์ชันสลับ Tab
         function switchTab(type) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
@@ -96,7 +88,6 @@
             }
         }
 
-        // ฟังก์ชันขอ OTP (จำลอง)
         function requestOTP(pageType) {
             const phoneInput = document.getElementById(pageType === 'reg' ? 'reg-phone' : 'login-phone');
             if(phoneInput.value.length < 9) {
@@ -106,18 +97,14 @@
 
             alert('ระบบส่ง OTP ไปที่เบอร์ ' + phoneInput.value + ' เรียบร้อยแล้ว (OTP คือ 1234)');
             
-            // แสดงกล่อง OTP
             document.getElementById('otp-box-' + pageType).style.display = 'block';
             
-            // เปิดใช้งานปุ่ม Submit (จำลองว่ารอ OTP แต่จริงๆ ให้กดได้เลยเพื่อทดสอบ)
             const submitBtn = document.getElementById(pageType === 'reg' ? 'btn-submit-reg' : 'btn-submit-login');
             submitBtn.disabled = false;
             
-            // เริ่มนับเวลาถอยหลัง
             startTimer(pageType);
         }
 
-        // ฟังก์ชันนับเวลาถอยหลัง
         function startTimer(pageType) {
             let time = 60;
             const timerElement = document.getElementById('timer-' + pageType);
