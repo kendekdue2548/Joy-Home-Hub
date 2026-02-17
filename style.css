@@ -311,9 +311,9 @@ body {
 .rating { font-size: 0.8rem; color: #888; }
 .rating i { color: #FBC02D; }
 
-/* ========================================================================== */
-/* RESPONSIVE DESIGN (มือถือ, iPad, Notebook) */
-/* ========================================================================== */
+/* ======================================================= */
+/* RESPONSIVE DESIGN & MOBILE FIXES (ปรับใหม่ให้สวยงาม) */
+/* ======================================================= */
 
 @media (max-width: 1024px) {
     .container { padding: 0 20px; }
@@ -322,35 +322,125 @@ body {
     .banner-side { flex-direction: row; }
 }
 
+/* จัดระเบียบหน้าจอมือถือใหม่ (Mobile Redesign) */
 @media (max-width: 768px) {
-    .header-content { flex-direction: column; gap: 15px; }
-    .search-bar { width: 100%; max-width: 100%; order: 2; }
-    .logo { order: 1; }
-    .user-actions { order: 3; width: 100%; justify-content: center; }
-    .banner-main h1 { font-size: 2rem; }
-    .category-icons { gap: 20px; }
+    /* 1. จัด Header ใหม่: ให้โลโก้กับไอคอนอยู่บรรทัดเดียวกัน */
+    .header-content {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 10px;
+    }
+
+    /* โลโก้ (ชิดซ้าย) */
+    .logo {
+        order: 1;
+        flex: 1;
+        text-align: left;
+    }
+    .logo h2 {
+        font-size: 1.3rem;
+    }
+
+    /* กลุ่มไอคอน ตะกร้า/หัวใจ (ชิดขวา) */
+    .user-actions {
+        order: 2;
+        width: auto;
+        justify-content: flex-end;
+        gap: 15px;
+    }
+    .icon-link {
+        font-size: 1.2rem;
+    }
+
+    /* ช่องค้นหา (ลงมาอยู่บรรทัดที่ 2 เต็มความกว้าง) */
+    .search-bar {
+        order: 3;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 5px;
+    }
+    .search-bar input {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    /* 2. ปรับ Banner */
+    .hero-grid {
+        margin-top: 15px;
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    .banner-main {
+        height: 240px;
+        padding-left: 20px;
+    }
+    .banner-content h1 {
+        font-size: 1.6rem;
+    }
+    .banner-content p {
+        font-size: 0.85rem;
+        max-width: 70%;
+        line-height: 1.4;
+    }
+    .banner-content button {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+
+    /* กล่องบริการ */
+    .banner-side {
+        flex-direction: row;
+        gap: 10px;
+    }
+    .side-item {
+        padding: 15px;
+    }
+    .side-item h3 { font-size: 1rem; }
+    .side-item p { 
+        font-size: 0.7rem; 
+        display: none; 
+    }
+    .item-1 p:first-of-type {
+        display: block;
+        margin-bottom: 0 !important;
+    }
+
+    /* 3. หมวดหมู่สินค้า */
+    .category-icons {
+        gap: 15px;
+        padding: 20px 0;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        overflow-x: auto;
+    }
+    .circle-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 1.4rem;
+        margin-bottom: 8px;
+    }
+    .icon-item span { font-size: 0.8rem; }
+    
     .flash-sale-bar { flex-direction: column; gap: 10px; text-align: center; }
 }
 
 @media (max-width: 576px) {
-    .banner-side { flex-direction: column; }
-    .banner-main { height: 250px; padding-left: 20px; }
-    .banner-content h1 { font-size: 1.8rem; }
-    .banner-content p {
-        font-size: 0.9rem;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
     .category-icons {
-        display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
+    }
+    .banner-side {
+        flex-direction: column;
+    }
+    .side-item p {
+        display: block;
     }
     .product-grid { grid-template-columns: repeat(1, 1fr); }
     .product-img { height: 200px; }
 }
+
 /* ======================================================= */
 /* ปุ่มติดต่อเรา (Fixed: แก้ปัญหาเมนูคัดลอกเด้ง) */
 /* ======================================================= */
@@ -365,11 +455,11 @@ body {
     align-items: flex-end;
     cursor: pointer;
     
-    /* --- ส่วนสำคัญที่เพิ่มใหม่ (แก้ปัญหาในคลิป) --- */
-    -webkit-tap-highlight-color: transparent; /* ลบสีเทาเวลากด */
-    -webkit-touch-callout: none; /* ห้ามเด้งเมนู Callout (iOS) */
-    -webkit-user-select: none;   /* ห้ามเลือกข้อความ (Safari) */
-    user-select: none;           /* ห้ามเลือกข้อความ (Standard) */
+    /* --- ป้องกันเมนูคัดลอกเด้งบนมือถือ --- */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 /* 1. ป้าย @LINE */
@@ -393,7 +483,7 @@ body {
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px) scale(0.8);
-    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* ปรับให้ไวขึ้น */
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
 .line-bubble.show-bubble {
@@ -419,7 +509,7 @@ body {
     position: relative;
     display: flex;
     align-items: flex-end;
-    pointer-events: none; /* ให้การกดทะลุไปที่ container แม่แทน (แก้บั๊กกดติดยาก) */
+    pointer-events: none; /* กดทะลุไปหาตัวแม่ */
 }
 
 .red-badge {
