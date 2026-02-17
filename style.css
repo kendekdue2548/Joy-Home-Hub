@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #F7F7F7; /* สีพื้นหลังขาวนวล */
+    background-color: #F7F7F7;
     color: #444;
 }
 
@@ -17,7 +17,7 @@ body {
     padding: 0 15px;
 }
 
-/* 1. Header Styles (ดำด้าน Matte Black) */
+/* 1. Header Styles */
 .main-header {
     background-color: #212121;
     color: white;
@@ -44,9 +44,7 @@ body {
     align-items: center;
     gap: 10px;
 }
-.logo h2 i {
-    color: #D4A373; /* สีทอง/น้ำตาลอ่อน */
-}
+.logo h2 i { color: #D4A373; }
 
 .search-bar {
     flex-grow: 1;
@@ -63,22 +61,17 @@ body {
     background: #333;
     color: white;
 }
-.search-bar input::placeholder {
-    color: #888;
-}
 
 .search-bar button {
     padding: 10px 25px;
-    background-color: #D4A373; /* ปุ่มค้นหาสีทอง */
+    background-color: #D4A373;
     border: none;
     color: white;
     border-radius: 0 4px 4px 0;
     cursor: pointer;
     transition: 0.3s;
 }
-.search-bar button:hover {
-    background-color: #C38D5E;
-}
+.search-bar button:hover { background-color: #C38D5E; }
 
 .user-actions {
     display: flex;
@@ -92,36 +85,15 @@ body {
     text-decoration: none;
     transition: 0.3s;
 }
-.icon-link:hover {
-    color: #D4A373;
-}
+.icon-link:hover { color: #D4A373; }
 
-.auth-buttons a {
-    text-decoration: none;
-    font-size: 0.9rem;
-    padding: 8px 15px;
-    border-radius: 4px;
-    margin-left: 5px;
-}
-
-.btn-register {
-    border: 1px solid #666;
-    color: #ccc;
-}
-
-.btn-login {
-    background-color: #D4A373;
-    color: white;
-    font-weight: 500;
-}
-
-/* 2. Hero Grid (Banner) */
+/* 2. Hero Grid */
 .hero-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 15px;
     margin-top: 30px;
-    height: 380px; /* เพิ่มความสูงเพื่อให้รูปเฟอร์นิเจอร์ดูเต็มตา */
+    height: 380px;
 }
 
 .banner-main {
@@ -130,7 +102,7 @@ body {
     position: relative;
     overflow: hidden;
     display: flex;
-    align-items: center; /* จัดข้อความให้อยู่กลางแนวตั้ง */
+    align-items: center;
     padding-left: 50px;
 }
 
@@ -184,10 +156,7 @@ body {
     cursor: pointer;
     transition: 0.3s;
 }
-.banner-content button:hover {
-    background: #D4A373;
-    color: white;
-}
+.banner-content button:hover { background: #D4A373; color: white; }
 
 .banner-side {
     display: flex;
@@ -207,8 +176,8 @@ body {
     overflow: hidden;
 }
 
-.side-item h3 { font-size: 1.4rem; margin-bottom: 5px; position: relative; z-index: 2;}
-.side-item p { font-size: 0.9rem; position: relative; z-index: 2;}
+.side-item h3 { font-size: 1.4rem; margin-bottom: 5px; position: relative; z-index: 2; }
+.side-item p { font-size: 0.9rem; position: relative; z-index: 2; }
 .side-item .icon-bg {
     position: absolute;
     right: -10px;
@@ -218,13 +187,8 @@ body {
     z-index: 1;
 }
 
-.item-1 {
-    background-color: #8D6E63; /* สีน้ำตาลกาแฟ */
-}
-
-.item-2 {
-    background-color: #5D4037; /* สีน้ำตาลเข้ม */
-}
+.item-1 { background-color: #8D6E63; }
+.item-2 { background-color: #5D4037; }
 
 /* 3. Category Icons */
 .category-icons {
@@ -235,11 +199,7 @@ body {
     flex-wrap: wrap;
 }
 
-.icon-item {
-    text-align: center;
-    cursor: pointer;
-    transition: 0.3s;
-}
+.icon-item { text-align: center; cursor: pointer; transition: 0.3s; }
 
 .circle-icon {
     width: 70px;
@@ -264,15 +224,11 @@ body {
     border-color: #D4A373;
 }
 
-.icon-item span {
-    font-size: 0.95rem;
-    color: #666;
-    font-weight: 500;
-}
+.icon-item span { font-size: 0.95rem; color: #666; font-weight: 500; }
 
-/* 4. Sale Bar (Earth Tone Red) */
+/* 4. Sale Bar */
 .flash-sale-bar {
-    background: linear-gradient(90deg, #A0522D, #CD853F); /* สีสนิม/ดินเผา */
+    background: linear-gradient(90deg, #A0522D, #CD853F);
     padding: 15px 30px;
     border-radius: 4px;
     display: flex;
@@ -282,12 +238,8 @@ body {
     margin-bottom: 30px;
 }
 
-.fs-text {
-    font-size: 1.4rem;
-    font-weight: 600;
-}
-.fs-text span { font-weight: normal; font-size: 1rem; margin-left: 10px; opacity: 0.9;}
-
+.fs-text { font-size: 1.4rem; font-weight: 600; }
+.fs-text span { font-weight: normal; font-size: 1rem; margin-left: 10px; opacity: 0.9; }
 .fs-timer {
     background: rgba(255,255,255,0.2);
     padding: 5px 15px;
@@ -298,13 +250,13 @@ body {
 /* 5. Product Grid */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* ปรับขนาดให้ใหญ่ขึ้น */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 25px;
 }
 
 .product-card {
     background: white;
-    border-radius: 8px; /* มนเล็กน้อย */
+    border-radius: 8px;
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
@@ -318,7 +270,7 @@ body {
 
 .product-img {
     position: relative;
-    height: 250px; /* รูปสูงขึ้น */
+    height: 250px;
     overflow: hidden;
     background: #eee;
 }
@@ -330,9 +282,7 @@ body {
     transition: 0.5s;
 }
 
-.product-card:hover .product-img img {
-    transform: scale(1.05); /* ซูมรูปนิดหน่อยตอนชี้ */
-}
+.product-card:hover .product-img img { transform: scale(1.05); }
 
 .discount-tag {
     position: absolute;
@@ -345,21 +295,9 @@ body {
     font-weight: bold;
 }
 
-.product-info {
-    padding: 20px;
-}
-
-.product-info h3 {
-    font-size: 1.1rem;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-.product-info .desc {
-    font-size: 0.85rem;
-    color: #999;
-    margin-bottom: 15px;
-}
+.product-info { padding: 20px; }
+.product-info h3 { font-size: 1.1rem; margin-bottom: 5px; color: #333; }
+.product-info .desc { font-size: 0.85rem; color: #999; margin-bottom: 15px; }
 
 .price {
     display: flex;
@@ -368,155 +306,48 @@ body {
     margin-bottom: 10px;
 }
 
-.curr {
-    color: #A0522D; /* สีน้ำตาลแดง */
-    font-size: 1.3rem;
-    font-weight: 600;
-}
-
-.old {
-    color: #bbb;
-    text-decoration: line-through;
-    font-size: 0.9rem;
-}
-
-.rating {
-    font-size: 0.8rem;
-    color: #888;
-}
+.curr { color: #A0522D; font-size: 1.3rem; font-weight: 600; }
+.old { color: #bbb; text-decoration: line-through; font-size: 0.9rem; }
+.rating { font-size: 0.8rem; color: #888; }
 .rating i { color: #FBC02D; }
 
-/* Mobile */
-@media (max-width: 768px) {
-    .header-content { flex-direction: column; gap: 15px;}
-    .search-bar { width: 100%; order: 3;}
-    .hero-grid { grid-template-columns: 1fr; height: auto;}
-    .banner-main { height: 300px; }
+/* ========================================================================== */
+/* RESPONSIVE DESIGN (มือถือ, iPad, Notebook) */
+/* ========================================================================== */
+
+@media (max-width: 1024px) {
+    .container { padding: 0 20px; }
+    .hero-grid { height: auto; grid-template-columns: 1fr; }
+    .banner-main { height: 350px; }
     .banner-side { flex-direction: row; }
 }
 
-/* ======================================================= */
-/* ส่วนที่เพิ่มใหม่: สำหรับกล่องบริการ (Craft Your Comfort)     */
-/* ======================================================= */
-
-/* ปรับปรุงกล่อง item-1 ให้รองรับเนื้อหาเยอะๆ */
-.service-box {
-    background: linear-gradient(135deg, #8D6E63, #6D4C41); /* ไล่สีน้ำตาลให้มีมิติ */
-    padding: 20px 25px !important; /* จัดระยะขอบใหม่ */
-    display: block !important; /* ยกเลิก flex เดิมเพื่อให้จัด Layout เอง */
-    color: white;
+@media (max-width: 768px) {
+    .header-content { flex-direction: column; gap: 15px; }
+    .search-bar { width: 100%; max-width: 100%; order: 2; }
+    .logo { order: 1; }
+    .user-actions { order: 3; width: 100%; justify-content: center; }
+    .banner-main h1 { font-size: 2rem; }
+    .category-icons { gap: 20px; }
+    .flash-sale-bar { flex-direction: column; gap: 10px; text-align: center; }
 }
 
-.service-content h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 5px;
-    color: #FFF;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-}
-
-.service-content .sub-head {
-    font-size: 0.9rem;
-    color: #EFEFEF;
-    margin-bottom: 15px;
-    font-weight: 300;
-}
-
-/* รายการจุดเด่น (List) */
-.feature-list {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 15px;
-}
-
-.feature-list li {
-    font-size: 0.9rem;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.feature-list li i {
-    color: #FFD54F; /* ไอคอนสีเหลืองทอง */
-    width: 20px;
-    text-align: center;
-}
-
-/* เส้นคั่น */
-.divider {
-    height: 1px;
-    background-color: rgba(255,255,255,0.3);
-    margin: 10px 0;
-}
-
-/* ส่วนรีโนเวท */
-.renovate-section {
-    background-color: rgba(0,0,0,0.15); /* พื้นหลังจางๆ ให้เด่นขึ้น */
-    padding: 10px;
-    border-radius: 6px;
-    border-left: 3px solid #FFD54F; /* ขีดสีทองด้านหน้า */
-}
-
-.renovate-section h4 {
-    font-size: 1rem;
-    margin-bottom: 2px;
-    color: #FFF;
-}
-
-.renovate-section p {
-    font-size: 0.8rem;
-    color: #DDD;
-    margin: 0;
-}
-
-/* ปรับตำแหน่งไอคอนพื้นหลังใหม่ ไม่ให้บังตัวหนังสือ */
-.service-box .icon-bg {
-    font-size: 8rem;
-    right: -20px;
-    bottom: -30px;
-    opacity: 0.1;
-    transform: rotate(-15deg);
-}
-
-/* ======================================================= */
-/* ส่วนที่เพิ่มใหม่: ระบบจัดการสถานะล็อกอิน และปุ่มหลังบ้าน */
-/* ======================================================= */
-
-.auth-buttons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-/* ปรับแต่งปุ่มระบบหลังบ้านที่เพิ่มด้วย JS */
-.auth-buttons a[href="admin.html"] {
-    background: #333 !important;
-    color: white !important;
-    padding: 5px 12px !important;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 0.85rem !important;
-    transition: 0.3s;
-    border: 1px solid #444;
-}
-
-.auth-buttons a[href="admin.html"]:hover {
-    background: #D4A373 !important;
-    border-color: #D4A373;
-}
-
-.auth-buttons span {
-    color: white;
-    font-size: 0.9rem;
-}
-
-.auth-buttons a[onclick="logout()"] {
-    color: #888 !important;
-    font-size: 0.8rem !important;
-    text-decoration: underline !important;
-}
-
-.auth-buttons a[onclick="logout()"]:hover {
-    color: #D32F2F !important;
+@media (max-width: 576px) {
+    .banner-side { flex-direction: column; }
+    .banner-main { height: 250px; padding-left: 20px; }
+    .banner-content h1 { font-size: 1.8rem; }
+    .banner-content p {
+        font-size: 0.9rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .category-icons {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+    .product-grid { grid-template-columns: repeat(1, 1fr); }
+    .product-img { height: 200px; }
 }
