@@ -352,7 +352,7 @@ body {
     .product-img { height: 200px; }
 }
 /* ======================================================= */
-/* ปุ่มติดต่อเรา สไตล์มะลิ (Floating Contact - Mali Style) */
+/* ปุ่มติดต่อเรา (Fixed: แก้ปัญหาเมนูคัดลอกเด้ง) */
 /* ======================================================= */
 
 .floating-container {
@@ -362,35 +362,46 @@ body {
     z-index: 2000;
     display: flex;
     flex-direction: column;
-    align-items: flex-end; /* จัดชิดขวา */
+    align-items: flex-end;
     cursor: pointer;
+    
+    /* --- ส่วนสำคัญที่เพิ่มใหม่ (แก้ปัญหาในคลิป) --- */
+    -webkit-tap-highlight-color: transparent; /* ลบสีเทาเวลากด */
+    -webkit-touch-callout: none; /* ห้ามเด้งเมนู Callout (iOS) */
+    -webkit-user-select: none;   /* ห้ามเลือกข้อความ (Safari) */
+    user-select: none;           /* ห้ามเลือกข้อความ (Standard) */
 }
 
-/* 1. ป้าย @LINE (ซ่อนไว้ก่อน) */
+/* 1. ป้าย @LINE */
 .line-bubble {
     background-color: white;
-    color: #00B900; /* สีเขียว LINE */
+    color: #00B900;
     font-weight: 900;
     font-size: 1.2rem;
     padding: 8px 20px;
-    border-radius: 50px; /* ทรงแคปซูล */
-    margin-bottom: 5px; /* ห่างจากหัวนิดหน่อย */
-    margin-right: 10px; /* ขยับขวาให้ตรงกับหัว */
+    border-radius: 50px;
+    margin-bottom: 5px;
+    margin-right: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     text-decoration: none;
     display: flex;
     align-items: center;
     gap: 5px;
+    position: relative;
     
-    /* Animation การโผล่ */
+    /* เริ่มต้นซ่อน */
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px) scale(0.8);
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* เด้งดึ๋ง */
-    position: relative;
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* ปรับให้ไวขึ้น */
 }
 
-/* ติ่งแหลมๆ ของป้าย LINE ชี้ลงมา */
+.line-bubble.show-bubble {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) scale(1) !important;
+}
+
 .line-bubble::after {
     content: '';
     position: absolute;
@@ -401,81 +412,69 @@ body {
     border-color: white transparent transparent transparent;
 }
 
-/* เครื่องหมาย @ */
-.at-symbol {
-    font-size: 1.4rem;
-}
+.at-symbol { font-size: 1.4rem; }
 
-/* 2. ส่วนปุ่มหลัก (รวมป้ายแดง + ไอคอน) */
+/* 2. ปุ่มหลัก */
 .main-contact-btn {
     position: relative;
     display: flex;
-    align-items: flex-end; /* จัดให้อยู่ระดับเดียวกัน */
+    align-items: flex-end;
+    pointer-events: none; /* ให้การกดทะลุไปที่ container แม่แทน (แก้บั๊กกดติดยาก) */
 }
 
-/* ป้ายแดง "ติดต่อ-สอบถาม" */
 .red-badge {
-    background-color: #D32F2F; /* สีแดงเข้ม */
+    background-color: #D32F2F;
     color: white;
     font-weight: bold;
     font-size: 1rem;
     line-height: 1.2;
-    padding: 15px 25px 15px 15px; /* เว้นขวาเยอะหน่อยเผื่อไอคอนบัง */
-    border-radius: 20px 20px 0 20px; /* มน 3 มุม, มุมขวาล่างแหลม */
+    padding: 15px 25px 15px 15px;
+    border-radius: 20px 20px 0 20px;
     display: flex;
-    flex-direction: column; /* เรียงคำว่า ติดต่อ กับ สอบถาม เป็น 2 บรรทัด */
+    flex-direction: column;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    margin-right: -25px; /* ดึงให้ซ้อนกับวงกลม */
-    margin-bottom: 15px; /* ยกสูงขึ้นนิดนึง */
-    z-index: 1; /* อยู่หลังวงกลม */
+    margin-right: -25px;
+    margin-bottom: 15px;
+    z-index: 1;
 }
 
-/* วงกลมไอคอน (หัวคน/กล่องข้อความ) */
 .icon-circle {
     width: 70px;
     height: 70px;
-    background-color: white; /* พื้นขาว */
+    background-color: white;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 35px;
-    color: #D4A373; /* สีไอคอนทอง */
+    color: #D4A373;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    z-index: 2; /* อยู่หน้าสุด */
-    border: 3px solid white; /* ขอบขาวหนาๆ */
-    
-    /* Animation กระพริบตา */
+    z-index: 2;
+    border: 3px solid white;
     animation: blink-shadow 3s infinite;
 }
 
-/* ============================ */
-/* INTERACTION (การโต้ตอบ) */
-/* ============================ */
-
-/* เมื่อเอาเมาส์ชี้ที่ปุ่มหลัก ให้ป้าย LINE เด้งขึ้นมา */
-.floating-container:hover .line-bubble {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0) scale(1); /* เด้งกลับมาขนาดปกติ */
-}
-
-/* เมื่อชี้แล้ว วงกลมขยายหน่อย */
-.floating-container:hover .icon-circle {
-    transform: scale(1.05);
-    color: #212121; /* เปลี่ยนไอคอนเป็นสีดำ */
-}
-
-/* Animation แสงวิบวับที่ปุ่ม */
 @keyframes blink-shadow {
     0%, 100% { box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
     50% { box-shadow: 0 0 20px rgba(212, 163, 115, 0.6); }
 }
 
-/* Mobile: ปรับขนาดให้เล็กลงนิดนึง */
-@media (max-width: 576px) {
-    .floating-container { right: 10px; bottom: 10px; }
+/* Logic บนคอมพิวเตอร์ (Hover ได้ปกติ) */
+@media (hover: hover) {
+    .floating-container:hover .line-bubble {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Logic บนมือถือ */
+@media (max-width: 1024px) {
+    .floating-container { bottom: 20px; right: 15px; }
     .icon-circle { width: 60px; height: 60px; font-size: 28px; }
     .red-badge { font-size: 0.85rem; padding: 10px 20px 10px 12px; margin-right: -20px; margin-bottom: 10px;}
     .line-bubble { font-size: 1rem; padding: 6px 15px; }
+    
+    /* อนุญาตให้กดที่ป้ายไลน์ได้ */
+    .line-bubble { pointer-events: auto; }
 }
