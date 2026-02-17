@@ -157,9 +157,9 @@
         <div style="height: 50px;"></div>
     </div>
 
-    <div class="floating-container">
+    <div class="floating-container" id="contactBtn" onclick="showLine(event)">
         
-        <a href="#" class="line-bubble">
+        <a href="https://line.me/ti/p/ใส่IDLineของคุณตรงนี้" target="_blank" class="line-bubble" id="lineBubble">
             <span class="at-symbol">@</span> LINE
         </a>
 
@@ -168,7 +168,6 @@
                 <span>ติดต่อ</span>
                 <span>สอบถาม</span>
             </div>
-            
             <div class="icon-circle">
                 <i class="fas fa-comment-dots"></i>
             </div>
@@ -176,5 +175,39 @@
 
     </div>
 
+    <script>
+        let bubbleTimer; // ตัวแปรเก็บเวลา
+
+        function showLine(event) {
+            // 1. ถ้ากดโดนป้าย @LINE สีเขียว ให้ลิ้งค์ไปไลน์เลย (ไม่ต้องทำอะไรกับ script)
+            if (event.target.closest('.line-bubble')) {
+                return;
+            }
+            
+            // 2. ถ้ากดที่ปุ่มแดง/ขาว ให้หยุดการทำงานปกติ (ไม่ให้เด้งไปบนสุด)
+            event.preventDefault();
+
+            const bubble = document.getElementById('lineBubble');
+            
+            // --- เช็คสถานะปัจจุบัน ---
+            
+            if (bubble.classList.contains('show-bubble')) {
+                // A. ถ้ามัน "โชว์" อยู่ -> ให้สั่ง "ซ่อน" ทันที (ปิด)
+                bubble.classList.remove('show-bubble');
+                clearTimeout(bubbleTimer); // ยกเลิกตัวจับเวลา
+            } else {
+                // B. ถ้ามัน "ซ่อน" อยู่ -> ให้สั่ง "โชว์" (เปิด)
+                bubble.classList.add('show-bubble');
+
+                // เคลียร์เวลาเก่า (กันพลาด)
+                clearTimeout(bubbleTimer);
+
+                // ตั้งเวลาใหม่ 2 นาที (120,000 ms) ให้มันหุบเองถ้าลืมปิด
+                bubbleTimer = setTimeout(() => {
+                    bubble.classList.remove('show-bubble');
+                }, 120000); 
+            }
+        }
+    </script>
 </body>
 </html>
