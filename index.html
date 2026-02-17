@@ -175,39 +175,48 @@
 
     </div>
 
-    <script>
-        let bubbleTimer; // ตัวแปรเก็บเวลา
+<script>
+        // ประกาศตัวแปรเก็บเวลาไว้นอกฟังก์ชัน (สำคัญมาก)
+        let bubbleTimer = null; 
 
         function showLine(event) {
-            // 1. ถ้ากดโดนป้าย @LINE สีเขียว ให้ลิ้งค์ไปไลน์เลย (ไม่ต้องทำอะไรกับ script)
+            // 1. ถ้ากดโดนป้าย @LINE สีเขียว ให้ลิ้งค์ไปไลน์เลย (ห้ามขวาง)
             if (event.target.closest('.line-bubble')) {
                 return;
             }
             
-            // 2. ถ้ากดที่ปุ่มแดง/ขาว ให้หยุดการทำงานปกติ (ไม่ให้เด้งไปบนสุด)
+            // 2. ถ้ากดที่ปุ่มแดง/ขาว ให้หยุดการเด้งของลิงก์ (เพื่อจะสั่งเปิด/ปิดแทน)
             event.preventDefault();
 
             const bubble = document.getElementById('lineBubble');
             
-            // --- เช็คสถานะปัจจุบัน ---
+            // --- เริ่มเช็คสถานะ ---
             
+            // ถามว่า: ตอนนี้ป้าย "โชว์อยู่" ใช่ไหม?
             if (bubble.classList.contains('show-bubble')) {
-                // A. ถ้ามัน "โชว์" อยู่ -> ให้สั่ง "ซ่อน" ทันที (ปิด)
+                
+                // A. ใช่! มันโชว์อยู่ -> สั่งให้ "ปิด" เดี๋ยวนี้
                 bubble.classList.remove('show-bubble');
-                clearTimeout(bubbleTimer); // ยกเลิกตัวจับเวลา
+                
+                // ยกเลิกการนับเวลาที่ค้างอยู่ (หยุดจับเวลา)
+                if (bubbleTimer) clearTimeout(bubbleTimer);
+
             } else {
-                // B. ถ้ามัน "ซ่อน" อยู่ -> ให้สั่ง "โชว์" (เปิด)
+                
+                // B. ไม่ใช่! มันซ่อนอยู่ -> สั่งให้ "เปิด"
                 bubble.classList.add('show-bubble');
 
-                // เคลียร์เวลาเก่า (กันพลาด)
-                clearTimeout(bubbleTimer);
+                // เคลียร์เวลาเก่าทิ้งก่อน (กันพลาด)
+                if (bubbleTimer) clearTimeout(bubbleTimer);
 
-                // ตั้งเวลาใหม่ 2 นาที (120,000 ms) ให้มันหุบเองถ้าลืมปิด
+                // เริ่มนับเวลาใหม่ 2 นาที (120,000 ms) ถ้าครบแล้วให้ปิดเอง
                 bubbleTimer = setTimeout(() => {
                     bubble.classList.remove('show-bubble');
                 }, 120000); 
             }
         }
     </script>
+</body>
+</html>
 </body>
 </html>
