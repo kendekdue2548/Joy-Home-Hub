@@ -80,15 +80,8 @@
             </div>
         </section>
 
-        <div class="flash-sale-bar">
-            <div class="fs-text">
-                <i class="fas fa-tags"></i> CLEARANCE SALE <span>ลดล้างสต๊อก สูงสุด 50%</span>
-            </div>
-            <div class="fs-timer">สิ้นสุดใน 05:00:00</div>
-        </div>
-
         <section class="product-grid">
-            <div class="product-card">
+            <div class="product-card" onclick="location.href='product-detail.html'">
                 <div class="product-img">
                     <span class="discount-tag">-30%</span>
                     <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=500&auto=format&fit=crop" alt="Green Sofa">
@@ -169,54 +162,34 @@
                 <span>สอบถาม</span>
             </div>
             <div class="icon-circle">
-                <i class="fas fa-comment-dots"></i>
-            </div>
+                <i class="fab fa-line"></i> </div>
         </div>
 
     </div>
 
-<script>
-        // ประกาศตัวแปรเก็บเวลาไว้นอกฟังก์ชัน (สำคัญมาก)
+    <script>
         let bubbleTimer = null; 
 
         function showLine(event) {
-            // 1. ถ้ากดโดนป้าย @LINE สีเขียว ให้ลิ้งค์ไปไลน์เลย (ห้ามขวาง)
             if (event.target.closest('.line-bubble')) {
                 return;
             }
             
-            // 2. ถ้ากดที่ปุ่มแดง/ขาว ให้หยุดการเด้งของลิงก์ (เพื่อจะสั่งเปิด/ปิดแทน)
             event.preventDefault();
 
             const bubble = document.getElementById('lineBubble');
             
-            // --- เริ่มเช็คสถานะ ---
-            
-            // ถามว่า: ตอนนี้ป้าย "โชว์อยู่" ใช่ไหม?
             if (bubble.classList.contains('show-bubble')) {
-                
-                // A. ใช่! มันโชว์อยู่ -> สั่งให้ "ปิด" เดี๋ยวนี้
                 bubble.classList.remove('show-bubble');
-                
-                // ยกเลิกการนับเวลาที่ค้างอยู่ (หยุดจับเวลา)
                 if (bubbleTimer) clearTimeout(bubbleTimer);
-
             } else {
-                
-                // B. ไม่ใช่! มันซ่อนอยู่ -> สั่งให้ "เปิด"
                 bubble.classList.add('show-bubble');
-
-                // เคลียร์เวลาเก่าทิ้งก่อน (กันพลาด)
                 if (bubbleTimer) clearTimeout(bubbleTimer);
-
-                // เริ่มนับเวลาใหม่ 2 นาที (120,000 ms) ถ้าครบแล้วให้ปิดเอง
                 bubbleTimer = setTimeout(() => {
                     bubble.classList.remove('show-bubble');
                 }, 120000); 
             }
         }
     </script>
-</body>
-</html>
 </body>
 </html>
