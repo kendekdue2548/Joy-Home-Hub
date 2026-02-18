@@ -882,34 +882,57 @@ body {
 /* ======================================================= */
 
 @media (max-width: 768px) {
-    .hero-grid {
-        grid-template-columns: 1fr; /* เปลี่ยนเป็นแนวตั้งเต็มจอ */
-        gap: 16px;
+    /* 1. ปรับแบนเนอร์หลักให้สูงขึ้นและโปร่งเหมือนรูปที่ 2 */
+    .banner-main {
+        height: 380px !important; /* เพิ่มความสูงเพื่อให้รูปโซฟาโชว์เต็มและดูไม่เบียด */
+        padding: 40px 25px !important; /* เพิ่มระยะห่างแนวตั้ง (Top/Bottom) */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* จัดตัวอักษรให้อยู่กลางแนวตั้ง */
+        border-radius: 12px;
+        margin-bottom: 15px;
     }
 
-    .banner-main {
-        height: 320px; /* ความสูงที่พอดีกับจอมือถือ */
-        padding: 0 30px; /* ลด Padding ลงเล็กน้อย */
-        border-radius: 8px;
+    .banner-content {
+        max-width: 100%;
+        text-align: left;
     }
 
     .banner-content h1 {
-        font-size: 2rem !important; /* ขนาดหัวข้อที่พอดีบนมือถือ */
+        font-size: 1.9rem !important; /* ขนาดหัวข้อที่เด่นชัดแต่ไม่คับหน้าจอ */
+        line-height: 1.2;
         margin-bottom: 12px;
+        font-weight: 600;
     }
 
     .banner-content p {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        line-height: 1.5;
         max-width: 90%;
+        opacity: 0.95;
     }
 
+    /* 2. ปรับกล่องบริการด้านล่างให้กว้างเต็มจอและสมดุล */
     .banner-side {
+        display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 15px;
     }
 
     .side-item {
-        width: 100%;
-        min-height: 130px; /* เพิ่มพื้นที่ให้กล่องบริการด้านข้าง */
+        padding: 25px;
+        min-height: 140px; /* เพิ่มความสูงให้กล่องดูมีมิติมากขึ้น */
+        border-radius: 12px;
+    }
+
+    .side-item h3 {
+        font-size: 1.25rem;
+        margin-bottom: 8px;
+    }
+
+    .side-item p {
+        font-size: 0.85rem;
+        display: block !important;
+        opacity: 0.9;
     }
 }
