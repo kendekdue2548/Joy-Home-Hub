@@ -147,12 +147,16 @@ body {
     cursor: pointer;
 }
 
-/* --- แก้ไขส่วนกล่องบริการ (Side Items) ให้ไอคอนโชว์ชัดเจน --- */
-.banner-side { display: flex; flex-direction: column; gap: 15px; }
+/* --- กู้คืนส่วนกล่องบริการให้เหมือนต้นฉบับ 100% --- */
+.banner-side { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+}
 
 .side-item {
     flex: 1;
-    border-radius: 8px;
+    border-radius: 8px; /* ความโค้งมนตามต้นฉบับ */
     padding: 30px;
     color: white;
     position: relative;
@@ -164,6 +168,7 @@ body {
 
 .side-item h3 { 
     font-size: 1.4rem; 
+    font-weight: 600;
     margin-bottom: 5px; 
     position: relative; 
     z-index: 2; 
@@ -173,24 +178,24 @@ body {
     font-size: 0.9rem; 
     position: relative; 
     z-index: 2; 
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
-/* ปรับความเข้มไอคอน Emoji ด้านหลังให้ชัดขึ้น */
+/* --- กู้คืนไอคอนอีโมจิ/สัญลักษณ์ให้กลับมาเห็นชัดเจน --- */
 .side-item .icon-bg {
     position: absolute;
-    right: -10px;
-    bottom: -10px;
-    font-size: 6rem;
-    opacity: 0.35; /* ปรับเพิ่มจาก 0.2 เป็น 0.35 ให้มองเห็นชัดเจนขึ้น */
+    right: 15px;  /* ตำแหน่งชิดขวาตามรูปภาพ */
+    bottom: 15px; /* ตำแหน่งชิดล่างตามรูปภาพ */
+    font-size: 4.5rem; /* ขนาดที่พอดีไม่บังข้อความ */
+    opacity: 0.3; /* ความเข้มที่ทำให้เห็นไอคอนชัดเจนแต่ไม่แย่งสายตา */
     z-index: 1;
-    transform: rotate(-15deg);
+    transform: rotate(-10deg); /* เอียงเล็กน้อยตามดีไซน์เดิม */
     pointer-events: none;
 }
 
-.item-1 { background-color: #8D7B68; }
-.item-2 { background-color: #5D4037; }
-
+/* สีพื้นหลังตาม Earth Tone เดิม */
+.item-1 { background-color: #8D7B68; } /* สีน้ำตาลอ่อน */
+.item-2 { background-color: #5D4037; } /* สีน้ำตาลเข้ม */
 /* 3. Category Icons */
 .category-icons {
     display: flex;
