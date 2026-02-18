@@ -42,9 +42,8 @@
             <div class="banner-side">
                 <div class="side-item item-1">
                     <h3>Craft Your Comfort</h3>
-                    <p style="margin-bottom: 5px;">ปรับขนาดได้ | เลือกวัสดุเองได้</p>
-                    <p style="margin-bottom: 5px;">ผลิตใหม่ทุกตัว รอสินค้าภายใน 20-30 วัน</p>
-                    <p style="margin: 0;">บริการรีโนเวท เปลี่ยนเบาะ หุ้มผ้าใหม่</p>
+                    <p>ปรับขนาดได้ | เลือกวัสดุเองได้</p>
+                    <p>ผลิตใหม่ทุกตัว รอสินค้า 20-30 วัน</p>
                     <i class="fas fa-pencil-ruler icon-bg"></i>
                 </div>
 
@@ -87,70 +86,20 @@
                 </div>
                 <div class="product-info">
                     <h3>Nordic L-Shape Sofa (เขียวมรกต)</h3>
-                    <p class="desc">ผ้ากำมะหยี่ นุ่มสบาย สไตล์นอร์ดิก</p>
                     <div class="price">
                         <span class="curr">฿12,900</span>
                         <span class="old">฿18,500</span>
                     </div>
-                    <div class="rating">
-                        <i class="fas fa-star"></i> 5.0 (ขายแล้ว 50)
-                    </div>
+                    <div class="rating"><i class="fas fa-star"></i> 5.0</div>
                 </div>
             </div>
-
-            <div class="product-card">
-                <div class="product-img">
-                    <span class="discount-tag">-15%</span>
-                    <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?q=80&w=500&auto=format&fit=crop" alt="Armchair">
-                </div>
-                <div class="product-info">
-                    <h3>Minimal Armchair (ไม้โอ๊ค)</h3>
-                    <p class="desc">เก้าอี้อาร์มแชร์ งานไม้แท้ 100%</p>
-                    <div class="price">
-                        <span class="curr">฿4,590</span>
-                        <span class="old">฿5,200</span>
-                    </div>
-                    <div class="rating">
-                        <i class="fas fa-star"></i> 4.8 (ขายแล้ว 120)
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?q=80&w=500&auto=format&fit=crop" alt="Table">
-                </div>
-                <div class="product-info">
-                    <h3>โต๊ะกลาง Coffee Table</h3>
-                    <p class="desc">ท็อปหินอ่อน ขาเหล็กสีทอง</p>
-                    <div class="price">
-                        <span class="curr">฿2,990</span>
-                    </div>
-                    <div class="rating"><i class="fas fa-star"></i> 4.9</div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img">
-                    <span class="discount-tag">NEW</span>
-                    <img src="https://images.unsplash.com/photo-1505693416388-b0346ef41495?q=80&w=500&auto=format&fit=crop" alt="Bed">
-                </div>
-                <div class="product-info">
-                    <h3>เตียงนอน Japanese Style (5 ฟุต)</h3>
-                    <p class="desc">ฐานเตียงไม้เตี้ย สไตล์ญี่ปุ่น</p>
-                    <div class="price">
-                        <span class="curr">฿8,900</span>
-                    </div>
-                    <div class="rating"><i class="fas fa-star"></i> 4.7</div>
-                </div>
-            </div>
-        </section>
+            </section>
         
         <div style="height: 50px;"></div>
     </div>
 
     <div class="floating-container" id="contactBtn" onclick="showLine(event)">
-        <a href="https://line.me/ti/p/ใส่IDLineของคุณตรงนี้" target="_blank" class="line-bubble" id="lineBubble">
+        <a href="https://line.me/ti/p/IDLINE" target="_blank" class="line-bubble" id="lineBubble">
             <span class="at-symbol">@</span> LINE
         </a>
 
@@ -167,16 +116,10 @@
 
     <script>
         let bubbleTimer = null; 
-
         function showLine(event) {
-            if (event.target.closest('.line-bubble')) {
-                return;
-            }
-            
+            if (event.target.closest('.line-bubble')) return;
             event.preventDefault();
-
             const bubble = document.getElementById('lineBubble');
-            
             if (bubble.classList.contains('show-bubble')) {
                 bubble.classList.remove('show-bubble');
                 if (bubbleTimer) clearTimeout(bubbleTimer);
