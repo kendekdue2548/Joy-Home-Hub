@@ -833,45 +833,83 @@ body {
 .item-2 { background-color: #5D4037; }
 
 /* ======================================================= */
-/* FINAL MOBILE FIX: สัดส่วนสมดุล ไม่เบี้ยว ไม่ผอม */
+/* BANNER FIX: ปรับสัดส่วนให้โปร่งและสวยงามตามต้นฉบับ */
 /* ======================================================= */
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* สัดส่วน Desktop */
+    gap: 24px;
+    margin-top: 30px;
+    height: auto;
+}
+
+.banner-main {
+    background-color: #333;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    height: 480px; /* เพิ่มความสูงเพื่อให้ภาพและข้อความมีพื้นที่หายใจ */
+    display: flex;
+    align-items: center; /* จัดเนื้อหาให้อยู่กลางแนวตั้ง */
+    padding: 0 60px; /* เพิ่ม Padding ซ้าย-ขวา */
+}
+
+.banner-content {
+    position: relative;
+    z-index: 10;
+    color: white;
+    max-width: 600px; /* จำกัดความกว้างข้อความไม่ให้แผ่จนเกินไป */
+}
+
+.banner-content h1 {
+    font-size: 3.5rem; /* ขนาดหัวข้อที่เด่นชัด */
+    font-weight: 600;
+    margin-bottom: 20px;
+    line-height: 1.1; /* ปรับระยะห่างระหว่างบรรทัดให้กระชับแต่ไม่เบียด */
+    letter-spacing: 1px;
+}
+
+.banner-content p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    opacity: 0.95;
+    margin: 0;
+}
+
+/* ======================================================= */
+/* MOBILE FIX: ปรับสัดส่วนบนมือถือไม่ให้เบี้ยว */
+/* ======================================================= */
+
 @media (max-width: 768px) {
-    /* Header: ชื่อแบรนด์บรรทัดเดียวเป๊ะ */
-    .header-content {
-        flex-wrap: wrap;
-        padding: 5px 0;
-    }
-
-    .logo { order: 1; flex: 1; }
-    .logo h2 { font-size: 0.95rem !important; }
-
-    .user-actions { order: 2; gap: 12px !important; }
-    .search-bar { order: 3; width: 100% !important; margin-top: 10px; }
-
-    /* Hero Grid: เปลี่ยนจากแบ่งซ้ายขวา เป็นแถวเดียว (ทำให้กล่องไม่ผอม) */
     .hero-grid {
-        grid-template-columns: 1fr; /* บังคับให้ขยายเต็มความกว้างหน้าจอ */
-        height: auto;
+        grid-template-columns: 1fr; /* เปลี่ยนเป็นแนวตั้งเต็มจอ */
+        gap: 16px;
     }
 
     .banner-main {
-        height: 250px;
-        padding-left: 20px;
+        height: 320px; /* ความสูงที่พอดีกับจอมือถือ */
+        padding: 0 30px; /* ลด Padding ลงเล็กน้อย */
+        border-radius: 8px;
     }
-    .banner-content h1 { font-size: 1.6rem; }
 
-    /* Service Box: กล่องจะกว้างเท่ากับหน้าจอมือถือ ไม่ผอมยาวอีกต่อไป */
+    .banner-content h1 {
+        font-size: 2rem !important; /* ขนาดหัวข้อที่พอดีบนมือถือ */
+        margin-bottom: 12px;
+    }
+
+    .banner-content p {
+        font-size: 1rem;
+        max-width: 90%;
+    }
+
     .banner-side {
         flex-direction: column;
         gap: 12px;
     }
 
     .side-item {
-        width: 100%; /* บังคับกว้างเต็มจอ */
-        min-height: 120px;
-        padding: 20px;
+        width: 100%;
+        min-height: 130px; /* เพิ่มพื้นที่ให้กล่องบริการด้านข้าง */
     }
-
-    .side-item h3 { font-size: 1.1rem; }
-    .side-item p { display: block !important; } /* โชว์ข้อความให้ครบ */
 }
