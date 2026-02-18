@@ -683,146 +683,68 @@ body {
 }
 
 /* ======================================================= */
-/* PROFESSIONAL MOBILE FIX (แก้ Header และ Layout มือถือ) */
+/* FINAL MOBILE HEADER FIX: ตัวอักษรบรรทัดเดียว ไม่ซ้อน */
 /* ======================================================= */
 
 @media (max-width: 768px) {
-    /* 1. จัดระเบียบ Header ให้ดูแพง (โลโก้และไอคอนอยู่บรรทัดเดียวกัน) */
     .main-header {
-        padding: 10px 0;
+        padding: 12px 0;
     }
 
     .header-content {
-        flex-direction: row; /* บังคับให้อยู่แถวเดียวกัน */
-        flex-wrap: wrap;
+        display: flex;
+        flex-direction: row; /* บังคับให้อยู่บรรทัดเดียวกัน */
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap; /* เพื่อให้ Search Bar ลงมาบรรทัดใหม่ได้ */
         gap: 10px;
     }
 
+    /* แก้ไขส่วนชื่อแบรนด์ให้แสดงบรรทัดเดียว */
     .logo {
-        flex: 0 0 auto;
+        flex: 1; /* ขยายพื้นที่ให้ชื่อแบรนด์ */
         order: 1;
+        display: flex;
+        align-items: center;
     }
 
     .logo h2 {
-        font-size: 1.1rem !important; /* ลดขนาดให้พอดีหน้าจอ */
-        letter-spacing: 0.5px;
-        white-space: nowrap;
+        font-size: 1rem !important; /* ลดขนาดลงเพื่อให้พอดีกับพื้นที่ */
+        white-space: nowrap; /* ห้ามขึ้นบรรทัดใหม่เด็ดขาด */
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin: 0;
+        letter-spacing: 0px;
     }
 
+    .logo h2 i {
+        font-size: 0.9rem; /* ปรับขนาดไอคอนโซฟาให้เล็กลงตามตัวอักษร */
+    }
+
+    /* จัดกลุ่มปุ่มตะกร้า/หัวใจ */
     .user-actions {
         order: 2;
-        flex: 0 0 auto;
-        gap: 15px !important;
+        display: flex;
+        gap: 12px !important;
+        margin-left: auto; /* ดันไปชิดขวา */
     }
 
-    /* ช่องค้นหาลงมาอยู่บรรทัดที่ 2 แบบเต็มความกว้าง */
+    .icon-link {
+        font-size: 1.1rem !important;
+    }
+
+    /* ปรับปรุง Search Bar ให้ดูสะอาด */
     .search-bar {
         order: 3;
         width: 100% !important;
-        max-width: 100%;
         margin-top: 5px;
     }
+}
 
-    .search-bar input {
-        height: 38px;
-        padding: 0 15px;
-        font-size: 0.85rem;
-    }
-
-    .search-bar button {
-        height: 38px;
-        padding: 0 15px;
-    }
-
-    /* 2. ปรับปรุงแบนเนอร์หลักและกล่องบริการ */
-    .hero-grid {
-        grid-template-columns: 1fr; /* ขยายเต็มความกว้างหน้าจอ */
-        margin-top: 15px;
-    }
-
-    .banner-main {
-        height: 220px;
-        padding-left: 20px;
-        border-radius: 8px;
-    }
-
-    .banner-content h1 {
-        font-size: 1.6rem !important;
-    }
-
-    .banner-content p {
-        font-size: 0.85rem;
-    }
-
-    /* กล่องบริการแนวตั้ง (Service Box) */
-    .banner-side {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .side-item {
-        padding: 20px;
-        min-height: 110px;
-        border-radius: 8px;
-    }
-
-    .side-item h3 {
-        font-size: 1.2rem;
-    }
-
-    .side-item p {
-        font-size: 0.8rem;
-        display: block !important; /* บังคับให้โชว์รายละเอียดครบ */
-    }
-
-    .side-item .icon-bg {
-        font-size: 3.5rem;
-        right: 10px;
-        bottom: 5px;
-    }
-
-    /* 3. ปรับหมวดหมู่สินค้าให้เลื่อนนิ้วดูได้ (Scrollable) */
-    .category-icons {
-        justify-content: flex-start;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        padding: 20px 0;
-        gap: 20px;
-        -webkit-overflow-scrolling: touch; /* เลื่อนลื่นๆ บน iOS */
-    }
-
-    .category-icons::-webkit-scrollbar {
-        display: none; /* ซ่อนแถบเลื่อนให้ดูสะอาดตา */
-    }
-
-    .icon-item {
-        flex: 0 0 auto;
-        width: 80px;
-    }
-
-    .circle-icon {
-        width: 55px;
-        height: 55px;
-        font-size: 1.3rem;
-    }
-
-    /* 4. ปรับปุ่มติดต่อลอยตัว (Floating Button) */
-    .floating-container {
-        bottom: 15px;
-        right: 15px;
-    }
-
-    .icon-circle {
-        width: 55px;
-        height: 55px;
-        font-size: 24px;
-    }
-
-    .red-badge {
-        font-size: 0.75rem;
-        padding: 6px 12px;
-        margin-bottom: -10px;
+/* สำหรับมือถือจอเล็กเป็นพิเศษ (เช่น iPhone SE) */
+@media (max-width: 375px) {
+    .logo h2 {
+        font-size: 0.85rem !important; /* ลดขนาดลงอีกนิดสำหรับจอแคบ */
     }
 }
